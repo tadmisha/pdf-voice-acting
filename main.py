@@ -9,6 +9,12 @@ def read_pdf(pdf_path):
     else:
         if not pdf_path.endswith('.pdf'):
             return "This file is not pdf"
+    pdf = PdfReader(pdf_path)
+    text = ''
+    for page_idx in range(pdf.numPages):
+        text += pdf.getPage(page_idx).extractText()
+    return text
+
 
 def text_to_speech(speech_filename, text, lang):
     pass
