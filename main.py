@@ -17,11 +17,20 @@ def read_pdf(pdf_path):
 
 
 def text_to_speech(speech_filename, text, lang):
-    pass
+    print('finish reading pdf')
+    print('start voice acting text...')
+    if text=="This path is empty" or text=="This file is not pdf":
+        lang='en'
+    tts = gTTS(text, lang=lang, slow=False)
+    tts.save(speech_filename)
+    print('finish voice acting text')
 
 def main():
     path = input('path to pdf file: ')
+    lang = input('language code (for example en/ru/fr/de): ')
+    speech_path = input('path to audio file: ')
     text = read_pdf(path)
+    text_to_speech(speech_path, text, lang)
 
 if __name__ == '__main__':
     main()
